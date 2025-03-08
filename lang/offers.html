@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{ResourcesTemplate.Offers_MenuTitle}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{CustomTitle}} - {{ResourcesTemplate.Offers_OurOffers}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlOffers}}" />
+    <meta property="og:url" content="{{UrlOffers}}" />
+    <meta property="og:title" content="{{ResourcesTemplate.Offers_MenuTitle}}" />
+    <meta property="og:image" content="{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}" />
+    <meta property="og:description" content="{{CustomTitle}} - {{ResourcesTemplate.Offers_OurOffers}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+
+    <div id="snow_fall"></div>
+
+    <main>
+        <!-- SECTION BANNER -->
+        <section class="contain-banner">
+            <div class="section-title-BG bg-img" style="background-image: url({{#CurrentPage.PhotosPage.0}}{{UrlMedias}}/crop-2200x800/{{IdMedia}}/{{FileNamePhoto}}{{/CurrentPage.PhotosPage.0}}{{^CurrentPage.PhotosPage.0}}{{#Photos.0}}{{UrlMedias}}/crop-2200x800/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}{{/CurrentPage.PhotosPage.0}});" alt="{{NamePhoto}}">
+                <div class="opacity">
+
+                    {{>Header}}
+
+                    <div class="content-section title-banner-and-widget">
+                        <div class="title-banner-contain">
+                            <h1 class="title-banner">{{ResourcesTemplate.Offers_OurOffers}}</h1>
+                        </div>
+
+                        <!-- SECTION WIDGET BE -->
+                        {{#HasBookingActivated}}
+                        <div class="widget-be-contain-in-banner">
+                            <div id="section-BE" class="content-section section-BE-home">
+                                <div class="check-availability content-section">
+                                    <div class="rounded-box">
+                                        {{>Widget-BE}}
+                                        {{>Widget-BE-secure}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/HasBookingActivated}}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION OFFRES -->
+        {{#HasPrestas}}
+        <section class="section section-prestas-in-others-pages">
+            <div class="content-section">
+
+                <div class="section-title">
+                    <h2>{{ResourcesTemplate.DiscoverOurOffers_1}}</h2>
+                </div>
+
+                <div class="presta-big-contain">
+                    {{#Prestations}}
+                    <div class="presta-contain">
+                        <img class="bg-img" src="{{#PhotosPresta.0}}{{UrlMedias}}/crop-700x500/{{IdMedia}}/{{FileNamePhoto}}{{/PhotosPresta.0}}" alt="{{NamePhoto}}" itemprop="image">
+
+                        <div class="infos">
+                            <div class="infos-base">
+                                <h3><a href="{{UrlPrestaTemplate}}" itemprop="url">{{TitrePresta}}</a></h3>
+
+                                {{#DescriptionPresta}}
+                                <div class="description-presta-offers">{{{DescriptionPresta}}}</div>
+                                {{/DescriptionPresta}}
+                            </div>
+
+                            <div class="price-and-resa">
+                                {{#MinPricePresta}}
+                                <div class="price-presta">
+                                    <span class="price-begin">{{ResourcesTemplate.PriceFrom}}</span>
+                                    <span class="presta-price"><strong>{{MinPricePresta}}{{CurrencySymbol}}</strong> /{{ResourcesTemplate.Night}}</span>
+                                </div>
+                                {{/MinPricePresta}}
+
+                                {{#HasBookingActivated}}
+                                <a href="{{{UrlBECustom}}}/Search/Index/{{IdPubBe}}?idoi={{IdOi}}&searchFirstAvailableDates=1&culture={{CurrentLang.CultureLang}}&forcedTemplate={{UrlTemplateBE}}" class="btn btn-default">{{ResourcesTemplate.Book}}</a>
+                                {{/HasBookingActivated}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/Prestations}}
+                </div>
+            </div>
+        </section>
+        {{/HasPrestas}}
+
+        <!-- SECTION OPTIONS -->
+        {{#HasOptions}}
+        {{>Options}}
+        {{/HasOptions}}
+
+        <!-- SECTION CALENDAR -->
+        {{#HasCalendarActivated}}
+        {{>Calendar}}
+        {{/HasCalendarActivated}}
+
+        <!-- SECTION NEWSLETTER -->
+        {{#HasNewsletterActivated}}
+        {{>Newsletter}}
+        {{/HasNewsletterActivated}}
+
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+</html>

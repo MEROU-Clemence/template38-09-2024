@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{ResourcesTemplate.Contact}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{ResourcesTemplate.ContactDescription}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlContact}}" />
+    <meta property="og:url" content="{{UrlContact}}" />
+    <meta property="og:title" content="{{ResourcesTemplate.Contact}}" />
+    <meta property="og:image" content="{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}" />
+    <meta property="og:description" content="{{ResourcesTemplate.ContactDescription}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+
+    <div id="snow_fall"></div>
+
+    <main>
+        <!-- SECTION BANNER -->
+        <section class="contain-banner">
+            <div class="section-title-BG bg-img" style="background-image: url(https://static.elloha.com/webgen/img/contact.jpg);" alt="{{NamePhoto}}">
+                <div class="opacity">
+
+                    {{>Header}}
+
+                    <div class="content-section title-banner-and-widget">
+                        <div class="title-banner-contain">
+                            <h1 class="title-banner">{{ResourcesTemplate.Contact}}</h1>
+                        </div>
+
+                        <!-- SECTION WIDGET BE -->
+                        {{#HasBookingActivated}}
+                        <div class="widget-be-contain-in-banner">
+                            <div id="section-BE" class="content-section section-BE-home">
+                                <div class="check-availability content-section">
+                                    <div class="rounded-box">
+                                        {{>Widget-BE}}
+                                        {{>Widget-BE-secure}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/HasBookingActivated}}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION CONTACT -->
+        <div class="section section-contactform">
+            <div class="content-section content-contactform">
+                <div class="col-contact-form content-left">
+                    {{! form-contact }}
+                    <form id="Contact-form" action="" method="GET">
+                        <div class="bloc-contact">
+
+                            <div class="section-title section-title-contact">
+                                <h2>{{ResourcesTemplate.Message}}</h2>
+                            </div>
+
+                            <div class="form-line">
+                                <div class="form-group">
+                                    <label for="Email-firstname" class="title-color-1 d-none">{{ResourcesTemplate.FirstName}} *</label>
+                                    <input id="Email-firstname" name="Email-firstname" type="text" placeholder="{{ResourcesTemplate.FirstNamePlaceholder}}" class="form-control" data-error="{{ResourcesTemplate.FirstNameError}}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Email-lastname" class="title-color-1 d-none control-label">{{ResourcesTemplate.LastName}} *</label>
+                                    <input id="Email-lastname" name="Email-lastname" type="text" placeholder="{{ResourcesTemplate.LastNamePlaceholder}}" class="form-control" data-error="{{ResourcesTemplate.LastNameError}}" required>
+                                </div>
+                            </div>
+                            <div class="form-line">
+                                <div class="form-group">
+                                    <label for="Email-email" class="title-color-1 d-none">{{ResourcesTemplate.Email}} *</label>
+                                    <input id="Email-email" name="Email-email" type="email" placeholder="{{ResourcesTemplate.EmailPlaceholder}}" class="form-control" data-error="{{ResourcesTemplate.EmailError}}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Email-phone" class="title-color-1 d-none">{{ResourcesTemplate.Phone}} *</label>
+                                    <input id="Email-phone" name="Email-phone" type="tel" placeholder="{{ResourcesTemplate.PhonePlaceholder}}" class="form-control" data-error="{{ResourcesTemplate.PhoneError}}" oninput="formatPhoneNumber(this)" required>
+                                </div>
+                            </div>
+                            <div clss="form-line">
+                                <div class="form-group">
+                                    <textarea id="Email-message" name="Email-message" rows="10" class="form-control" placeholder="{{ResourcesTemplate.MessagePlaceholder}}" data-error="{{ResourcesTemplate.MessageError}}" required></textarea>
+                                </div>
+                            </div>
+
+                            {{#HasNewsletterActivated}}
+                            <div class="form-line">
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <label class="title-color-1">
+                                            <input id="Email-subscribe" type="checkbox" value="OUI">{{ResourcesTemplate.SubscribeToNewsletter}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-line">
+                                <div class="form-group">
+                                    <label class="title-color-1">
+                                        <text class="text-newsletter">{{ResourcesTemplate.SubscribeToNewsletterText}}</text>
+                                    </label>
+                                </div>
+                            </div>
+                            {{/HasNewsletterActivated}}
+
+                            <div class="form-line">
+                                <div class="form-group last-group-contact">
+                                    <label class="title-color-1">
+                                        <text class="text-newsletter">{{ResourcesTemplate.ContactRGPDText}}</text>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{>Captcha}}
+                    </form>
+                </div>
+
+                <div class="col-contact-info content-right">
+                    <div>
+                        <div class="section-title section-title-contact-2">
+                            <h2>{{ResourcesTemplate.OurLocation}}</h2>
+                        </div>
+
+                        <div class="sub-content-block sub-content-block-address">
+                            <div class="name-address-contact"><strong>{{CustomTitle}}<sup class="rating-stars">{{{Rating}}}</sup></strong><br></div>
+
+                            <div class="address-line address-line-contact"><i class="las la-map-marker"></i> {{AddressLine}}, {{City}} {{PostalCode}} - {{Country}}</div>
+                        </div>
+
+                        <!-- SECTION MAP -->
+                        <div class="section-map section-map-in-contact">
+                            <div id="applemapkit" class="fullwidth-mapkit">
+                                <div id="mapApple"></div>
+                            </div>
+                        </div>
+
+                        {{#HasPhoneNumberActivated}}
+                        <p class="sub-content-block">
+                            <a href="tel:{{PhoneNumber}}">
+                                <span>{{PhoneNumber}}</span>
+                                <i class="las la-phone icon-post-padding"></i>
+                            </a>
+                        </p>
+                        {{/HasPhoneNumberActivated}}
+                        {{#HasMobilePhoneNumberActivated}}
+                        <p class="sub-content-block">
+                            <a href="tel:{{MobilePhoneNumber}}">
+                                <span>{{MobilePhoneNumber}}</span>
+                                <i class="las la-mobile icon-post-padding"></i>
+                            </a>
+                        </p>
+                        {{/HasMobilePhoneNumberActivated}}
+                        {{#FaxNumber}}
+                        <p class="sub-content-block">
+                            {{ResourcesTemplate.AbrFax}} {{FaxNumber}}
+                        </p>
+                        {{/FaxNumber}}
+                        {{#HasWhatsappWidgetActivated}}
+                        <p class="sub-content-block">
+                            <a href="{{WhatsappUrl}}">
+                                <span>WhatsApp</span>
+                                <i class="lab la-whatsapp icon-post-padding"></i>
+                            </a>
+                        </p>
+                        {{/HasWhatsappWidgetActivated}}
+                        <p class="sub-content-block contactme">
+                            <a class="dynamic-mail-to">{{ResourcesTemplate.contactByEmail}}</a>
+                            <i class="las la-envelope icon-post-padding"></i>
+                        </p>
+                    </div>
+
+                    {{#HasSocialNetworks}}
+                    <div class="social-links-widget">
+                        <div class="contain-hr contain-hr-header">
+                            <hr class="footer-hr">
+                        </div>
+
+                        <div class="title-and-social-medias">
+                            <div class="section-title section-title-contact-2">
+                                <h2>{{ResourcesTemplate.FollowUs}} !</h2>
+                            </div>
+
+                            <div class="widget-content">
+                                <ul class="social-links">
+                                    {{#TikTok}}
+                                    <li><a href="{{TikTok}}" target="_blank"><span class="fab fa-tiktok"></span></a></li>
+                                    {{/TikTok}}
+                                    {{#Facebook}}
+                                    <li><a href="{{Facebook}}" target="_blank"><span class="lab la-facebook-f"></span></a></li>
+                                    {{/Facebook}}
+                                    {{#Twitter}}
+                                    <li><a href="{{Twitter}}" target="_blank"><span class="lab la-twitter"></span></a></li>
+                                    {{/Twitter}}
+                                    {{#Pinterest}}
+                                    <li><a href="{{Pinterest}}" target="_blank"><span class="lab la-pinterest"></span></a></li>
+                                    {{/Pinterest}}
+                                    {{#Youtube}}
+                                    <li><a href="{{Youtube}}" target="_blank"><span class="lab la-youtube"></span></a></li>
+                                    {{/Youtube}}
+                                    {{#Instagram}}
+                                    <li><a href="{{Instagram}}" target="_blank"><span class="lab la-instagram"></span></a></li>
+                                    {{/Instagram}}
+                                    {{#Vimeo}}
+                                    <li><a href="{{Vimeo}}" target="_blank"><span class="lab la-vimeo"></span></a></li>
+                                    {{/Vimeo}}
+                                    {{#Linkedin}}
+                                    <li><a href="{{Linkedin}}" target="_blank"><span class="lab la-linkedin-in"></span></a></li>
+                                    {{/Linkedin}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {{/HasSocialNetworks}}
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+</html>
