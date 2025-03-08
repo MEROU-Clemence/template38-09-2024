@@ -1,3 +1,19 @@
+/*Variables*/
+:root {
+    --color-link: #90D7FF;
+    --color-btn: #90D7FF;
+    --color-btn-txt: #FFFFFF;
+    --color-text: #092327;
+    --color-text-white: #FFFFFF;
+    --color-title: #092327;
+    --color-bg-1: #FFFFFF;
+    --color-bg-2: #BFD0E0;
+    --color-bg-3: #0B5351;
+    --color-red: #FF875C;
+    --font-title: 'Outfit';
+    --font-text: 'Outfit';
+}
+
 /****** FOR ALL ******/
 * {
     box-sizing: border-box;
